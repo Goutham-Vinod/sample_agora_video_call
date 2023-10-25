@@ -14,11 +14,11 @@ class IndexPage extends StatefulWidget {
 
 class _IndexPageState extends State<IndexPage> {
   final _appIdController = TextEditingController();
-  final _chatIdController = TextEditingController();
+  final _channelNameController = TextEditingController();
   final _videoTokenController = TextEditingController();
   @override
   void dispose() {
-    _chatIdController.dispose();
+    _channelNameController.dispose();
     _appIdController.dispose();
     _videoTokenController.dispose();
 
@@ -46,25 +46,25 @@ class _IndexPageState extends State<IndexPage> {
                   'Both user have to join same channel. User id will be assinged automatically'),
               SizedBox(height: 10),
               TextField(
-                controller: _chatIdController,
+                controller: _channelNameController,
                 decoration: const InputDecoration(
                     border:
                         UnderlineInputBorder(borderSide: BorderSide(width: 1)),
-                    hintText: 'Chat Id'),
+                    hintText: 'Channel Name'),
               ),
               TextField(
                 controller: _appIdController,
                 decoration: const InputDecoration(
                     border:
                         UnderlineInputBorder(borderSide: BorderSide(width: 1)),
-                    hintText: 'App Id'),
+                    hintText: 'App ID'),
               ),
               TextField(
                 controller: _videoTokenController,
                 decoration: const InputDecoration(
                     border:
                         UnderlineInputBorder(borderSide: BorderSide(width: 1)),
-                    hintText: 'Video Token'),
+                    hintText: 'Temp Token'),
               ),
               SizedBox(height: 20),
               ElevatedButton(
@@ -88,7 +88,7 @@ class _IndexPageState extends State<IndexPage> {
         MaterialPageRoute(
           builder: (context) => CallScreen(
             appId: _appIdController.text,
-            chatId: _chatIdController.text,
+            channelName: _channelNameController.text,
             videoToken: _videoTokenController.text,
           ),
         ));

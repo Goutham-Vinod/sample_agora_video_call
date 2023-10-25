@@ -8,12 +8,12 @@ class CallScreen extends StatefulWidget {
   const CallScreen(
       {Key? key,
       required this.appId,
-      required this.chatId,
+      required this.channelName,
       required this.videoToken})
       : super(key: key);
 
   final String videoToken;
-  final String chatId;
+  final String channelName;
   final String appId;
 
   @override
@@ -91,7 +91,7 @@ class _CallScreenState extends State<CallScreen> {
           rtcEngine: _engine,
           canvas: VideoCanvas(uid: _remoteUid),
           connection: RtcConnection(
-              channelId: widget.chatId), // <---- channel name here
+              channelId: widget.channelName), // <---- channel name here
         ),
       );
     } else {
@@ -148,7 +148,7 @@ class _CallScreenState extends State<CallScreen> {
 
     await _engine.joinChannel(
       token: widget.videoToken,
-      channelId: widget.chatId, // <---- channel name here
+      channelId: widget.channelName, // <---- channel name here
       uid: 0,
       options: const ChannelMediaOptions(),
     );
